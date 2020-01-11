@@ -9,6 +9,7 @@ app.set('port', process.env.PORT || 4000);
 app.use(cors());
 app.use(express.json());
 // Routes
+app.get('/', (req, res) => res.send('Route Main'))
 app.use('/api/users', require('./routes/users.js'));
 app.use('/api/notes', require('./routes/notes.js'));
 
