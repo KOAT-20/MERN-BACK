@@ -3,8 +3,8 @@ require('./db.js');
 const app = require('./app.js');
 
 async function main () {
-  await app.listen (3000);
-  console.log('Server port 3000');
+  await app.listen (app.get('port'));
+  console.log('Server port', app.get('port'));
 }
 
 main();
