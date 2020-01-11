@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
-const URI = process.env.MONGO_DB_URI;
+const URI = process.env.MONGO_DB_URI
+  ? process.env.MONGO_DB_URI
+  : 'mongodb://localhost/MERNDB_TEST';
 
 mongoose.connect (URI, {
   // userCreateIndex: true, No soportada
