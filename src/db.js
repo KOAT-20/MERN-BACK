@@ -4,7 +4,7 @@ const URI = process.env.MONGO_DB_URI
   : 'mongodb://localhost/MERNDB_TEST';
 
 mongoose.connect (URI, {
-  // useCreateIndex: true,
+  useCreateIndex: true,
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
