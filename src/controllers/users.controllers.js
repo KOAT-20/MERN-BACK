@@ -1,16 +1,23 @@
-const userControl = {}
+const userControl = {};
+const userModel = require('../models/users.models.js');
 
-userControl.getUsers = (req, res) => res.json({
-  name: 'Hello',
-  last: 'user',
-})
+userControl.getUsers = async (req, res) => {
+  const users = await userModel.find();
+  res.json(users);
+}
 
-userControl.createUser = (req, res) => res.json({
-  message: 'user create'
-})
+userControl.createUser = async (req, res) => {
+  const { username } = req.body;
+  const newUser = new userModel({
+    username
+  })
+  await newUser.save();
+  res.json({message: 'Usuario creado exitosamente!'})
+}
 
-userControl.deleteUser = (req, res) => res.json({
-  message: 'User delete'
-})
+userControl.deleteUser = async (req, res) => {
+  await userModel.findOneAndDelete(req.params.id);
+  res.json({message: 'Usuario eliminado!'})
+}
 
 module.exports = userControl;

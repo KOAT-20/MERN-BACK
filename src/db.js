@@ -4,9 +4,10 @@ const URI = process.env.MONGO_DB_URI
   : 'mongodb://localhost/MERNDB_TEST';
 
 mongoose.connect (URI, {
-  // userCreateIndex: true, No soportada
+  // useCreateIndex: true,
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useFindAndModify: false,
 });
 
 const connection = mongoose.connection;
