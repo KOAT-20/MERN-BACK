@@ -25,7 +25,6 @@ noteControl.createNote = async (req, res) => {
 
 noteControl.updateNote = async (req, res) => {
   const { title, description, author } = req.body;
-
   await noteModel.findOneAndUpdate({_id: req.params.id}, {
     title,
     description,

@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const router = Router();
 const {
-  getUsers, createUser, deleteUser
+  getUsers, getUser, createUser, deleteUser
 } = require('../controllers/users.controllers.js');
 
 router.route('/')
@@ -9,7 +9,7 @@ router.route('/')
   .post(createUser)
 
 router.route('/:id')
-  // .get(getUser)
+  .get(getUser)
   .delete(deleteUser)
 
 
