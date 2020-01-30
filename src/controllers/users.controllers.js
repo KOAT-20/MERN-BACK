@@ -31,7 +31,10 @@ userControl.updateUser = async (req, res) => {
 }
 
 userControl.deleteUser = async (req, res) => {
-  await userModel.findOneAndDelete(req.params.id);
+  const { _id } = req.body;
+  await userModel.findOneAndDelete({_id: req.params.id}, {
+    _id,
+  });
   res.json({message: 'Usuario eliminado!'})
 }
 
