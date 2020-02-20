@@ -12,17 +12,18 @@ userControl.getUser = async (req, res) => {
 }
 
 userControl.createUser = async (req, res) => {
-  const { username, lastname } = req.body;
+  const { username, lastname, password } = req.body;
   const newUser = new userModel({
     username,
-    lastname
+    lastname,
+    password
   })
   await newUser.save();
   res.json({message: 'Usuario creado exitosamente!'})
 }
 
 userControl.updateUser = async (req, res) => {
-  const { username, lastname } = req.body;
+  const { _id, username, lastname } = req.body;
   await userModel.findOneAndUpdate({_id: req.params.id}, {
     username,
     lastname
