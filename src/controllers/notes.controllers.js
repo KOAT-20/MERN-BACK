@@ -19,8 +19,13 @@ noteControl.createNote = async (req, res) => {
     date,
     author
   })
-  await newNote.save();
-  res.json({message: 'Nota creada exitosamente!'})
+  try {
+    let message = 'Nota creada exitosamente!';
+    await newNote.save();
+    res.json({message: message});
+  } catch (error) {
+    res.json({Error: error.message});
+  }
 }
 
 noteControl.updateNote = async (req, res) => {
